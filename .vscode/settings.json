@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "${workspaceFolder}/services/cli-service/Cargo.toml"
+    ]
+}
