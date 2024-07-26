@@ -1,4 +1,4 @@
-use clap::{Command, Parser, Subcommand};
+use clap::{Parser, Subcommand};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -37,17 +37,21 @@ enum Commands {
 
 fn main() {
     let cli = Cli::parse();
-    
+
     match &cli.command {
         Commands::Signup { username, password } => {
-            println!("you are now signed up")
+            if !password.is_empty() {
+                println!("{username} are now signed up")
+            }
         }
         Commands::Post {
             username,
             password,
             content,
         } => {
-            println!("you have posted: {content}")
+            if !password.is_empty() {
+                println!("{username} have posted: {content}")
+            }
         }
         Commands::View => {
             println!("Nothing to view")
